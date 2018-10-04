@@ -4,7 +4,7 @@ node
  {
      
         stage('Build') {
-            
+                         checkout scm
                          sh 'pwd'
                          sh 'ls -l'
 
