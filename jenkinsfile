@@ -5,7 +5,7 @@ node
      
         stage('Build') {
                          checkout scm
-                         sh 'pwd'
+                         sh 'gradle build'
                          sh 'ls -l'
 
             
