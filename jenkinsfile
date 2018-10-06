@@ -5,7 +5,7 @@ node
      
         stage('Build') {
                          checkout scm
-                         sh 'gradle build'
+                         sh 'gradle buildit'
                          sh 'ls -l'
 
             

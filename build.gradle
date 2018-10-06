@@ -34,6 +34,8 @@ dependencies {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
+apply plugin: 'maven-publish'
+
 
 mainClassName = 'hello.HelloWorld'
 
@@ -65,4 +67,27 @@ task wrapper(type: Wrapper) {
     gradleVersion = '3.5'
 }
 // end::wrapper[]
-
+ext {
+    jarToPublish = file( 'jb-hello-world-0.1.0.jar' )
+}
+publishing {
+    publications {
+        yourPublicationNameHere( MavenPublication ) {
+            artifact jarToPublish
+            /* can specify a classifier if not encoded in the filename
+            artifact jarToPublish {
+                classifier 'theClassifier'
+            }
+            */
+        }
+    }
+    repositories {
+        maven {
+            url 'http://18.219.87.197:8081/nexus/content/repositories/test/'
+            credentials {
+                username 'admin'
+                password 'admin123'
+            }
+        }
+    }
+}
